@@ -1,11 +1,13 @@
 package com.ciscodiz.propietarios_maven.controlador;
 
+import com.ciscodiz.propietarios_maven.modelo.DNI;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javax.management.InvalidAttributeValueException;
 
 public class FXMLController implements Initializable {
     

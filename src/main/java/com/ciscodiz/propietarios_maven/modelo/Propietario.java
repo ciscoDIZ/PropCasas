@@ -21,6 +21,10 @@ public class Propietario {
     private DNI dni;
     private ArrayList<Casa> casasLista;
 
+    /*
+        implementar constructor de copia necesario para pasar objetos a ControlPersistencia
+     */
+    
     public Propietario(String nombre, String apellido1, String apellido2,
              char letra, int numero) {
         try {
@@ -34,6 +38,17 @@ public class Propietario {
         }
     }
 
+    public Propietario(Propietario toCopy){
+        this.nombre = toCopy.nombre;
+        this.apellido1 = toCopy.apellido1;
+        this.apellido2 = toCopy.apellido2;
+        this.edad = toCopy.edad;
+        this.dni = toCopy.dni;
+        this.casasLista = toCopy.casasLista;
+    }
+
+   
+    
     public String getNombre() {
         return nombre;
     }

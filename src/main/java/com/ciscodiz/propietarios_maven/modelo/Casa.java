@@ -61,7 +61,11 @@ public class Casa {
         propietariosList = new ArrayList<>();
         nombreTabla = toCopy.nombreTabla;
     }
-    
+   /* 
+    public String insertData(){
+        return "INSERT INTO "+nombreTabla+" "
+    }
+    */
     public boolean addPropietario(Propietario p){
         return propietariosList.add(p);
     }

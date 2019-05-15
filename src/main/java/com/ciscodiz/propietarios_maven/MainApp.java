@@ -1,5 +1,8 @@
 package com.ciscodiz.propietarios_maven;
 
+import com.ciscodiz.propietarios_maven.modelo.Casa;
+import com.ciscodiz.propietarios_maven.modelo.ControlPersistencia;
+import com.ciscodiz.propietarios_maven.modelo.Propietario;
 import javafx.application.Application;
 import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +35,8 @@ public class MainApp extends Application {
      */
     public static void main(String[] args) {
         launch(args);
+        ControlPersistencia controlPersistencia = new ControlPersistencia();
+        controlPersistencia.crearTablas();
     }
 
 }

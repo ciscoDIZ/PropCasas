@@ -48,7 +48,7 @@ public class DNI {
 
     @Override
     public String toString() {
-        return "DNI{" + "letra=" + letra + ", numero=" + numero + '}';
+        return  numero + String.valueOf(letra);
     }
     
 }

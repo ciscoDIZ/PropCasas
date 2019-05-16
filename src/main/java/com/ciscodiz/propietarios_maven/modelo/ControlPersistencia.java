@@ -17,9 +17,7 @@ import java.util.logging.Logger;
  * @author Francisco de Asís Domínguez Iceta <toteskuu@gmail.com>
  */
 public class ControlPersistencia {
-
-    private Casa casa;
-    private Propietario propietario;
+    
     private String tablaPropietarios;
     private String tablaCasas;
     private String tablaIntermedia;
@@ -37,9 +35,7 @@ public class ControlPersistencia {
     private String numero;
     private String via;
 
-    public ControlPersistencia(Casa casa, Propietario propietario) {
-        this.casa = new Casa(casa);
-        this.propietario = new Propietario(propietario);
+    public ControlPersistencia() {
         tablaPropietarios = "propietarios";
         tablaCasas = "casas";
         tablaIntermedia = "casas_propietarios";
@@ -58,8 +54,7 @@ public class ControlPersistencia {
         via = "via";
     }
 
-    public ControlPersistencia() {
-    }
+    
 
     public void insertarPropietario(Propietario p) {
         try (
@@ -143,6 +138,28 @@ public class ControlPersistencia {
         }
     }
 
+    public void actualizarPropietario(DNI dni, String nombre, String apellido1
+            , String apellido2, String edad){
+        try (
+            Connection connection = DriverManager.getConnection("jdbc:mysql://192.168.0.162:3306/propietariosBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
+                Statement statement;
+                String sql;
+
+                statement = connection.createStatement();
+                sql = "update propietariosBD." + tablaPropietarios+ " set "
+                        + this.nombre+" = "+nombre
+                        + ", "+this.apellido1 +"="+apellido1 
+                        + ", "+this.apellido2 +"="+apellido2
+                        + ", "+this.edad +"="+edad
+                        + " where "
+                        + this.dni+" = "+dni;
+                statement.executeUpdate(sql);
+                statement.close();
+        } catch (SQLException ex) {
+            Logger.getLogger(ControlPersistencia.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void crearTablas() {
         try (
             Connection connection = DriverManager.getConnection("jdbc:mysql://192.168.0.162:3306/propietariosBD?serverTimezone=UTC", "root", "1q2w3e4r");) {
@@ -190,23 +207,7 @@ public class ControlPersistencia {
             Logger.getLogger(ControlPersistencia.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    public Casa getCasa() {
-        return casa;
-    }
-
-    public void setCasa(Casa casa) {
-        this.casa = casa;
-    }
-
-    public Propietario getPropietario() {
-        return propietario;
-    }
-
-    public void setPropietario(Propietario propietario) {
-        this.propietario = propietario;
-    }
-
+    
     public String getTablaPropietarios() {
         return tablaPropietarios;
     }
